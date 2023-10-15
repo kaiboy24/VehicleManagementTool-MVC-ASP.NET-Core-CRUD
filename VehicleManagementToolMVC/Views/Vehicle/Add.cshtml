@@ -1,0 +1,57 @@
+﻿@model VehicleManagementToolMVC.Models.VehicleViewModel
+
+@{
+    ViewData["Title"] = "Add Vehicle";
+    var errorMessage = TempData["errorMessage"]?.ToString();
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+<div class="alert alert-danger">
+    <strong>Error </strong>@errorMessage
+    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+}
+<form action="Add" method="post">
+    <div class="mb-3">
+        <label class="form-label">Brand</label>
+        <input type="text" class="form-control" asp-for="Brand" />
+        <span asp-validation-for="Brand" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Model</label>
+        <input type="text" class="form-control" asp-for="Model" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Condition</label>
+        <input type="text" class="form-control" asp-for="Condition" />
+        <span asp-validation-for="Condition" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mileage</label>
+        <input type="text" class="form-control" asp-for="Mileage" />
+        <span asp-validation-for="Mileage" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Construction of year</label>
+        <input type="text" class="form-control" asp-for="ConstructionOfYear" />
+        <span asp-validation-for="ConstructionOfYear" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fuel kind</label>
+        <input type="text" class="form-control" asp-for="FuelKind" />
+        <span asp-validation-for="FuelKind" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Seller</label>
+        <input type="text" class="form-control" asp-for="Seller" />
+        <span asp-validation-for="Seller" class="text-danger"></span>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </div>
+
+</form>

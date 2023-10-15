@@ -1,0 +1,75 @@
+﻿@model List<VehicleManagementToolMVC.Models.VehicleViewModel>
+
+@{
+    ViewData["Title"] = "Vehicle information";
+    var successMessage = TempData["successMessage"]?.ToString();
+    var errorMessage = TempData["errorMessage"]?.ToString();
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(@successMessage))
+{
+    <div class="alert alert-success">
+        <strong>Success </strong>@successMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+else if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger">
+        <strong>Error </strong>@errorMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<form>
+    <button asp-action="Add" asp-controller="Vehicle" class="btn btn-primary mb-3">Add vehicle</button>
+    <table class="table table-responsive table-hover table-bordered">
+        <thread>
+            <tr class="table-active">
+                <th>Id</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Condition</th>
+                <th>Mileage</th>
+                <th>Construction of year</th>
+                <th>Fuel kind</th>
+                <th>Seller</th>
+                <th>Operations</th>
+            </tr>
+        </thread>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var vehicle in Model)
+                {
+                    <tr>
+                        <td>@vehicle.Id</td>
+                        <td>@vehicle.Brand</td>
+                        <td>@vehicle.Model</td>
+                        <td>@vehicle.Condition</td>
+                        <td>@vehicle.Mileage</td>
+                        <td>@vehicle.ConstructionOfYear</td>
+                        <td>@vehicle.FuelKind</td>
+                        <td>@vehicle.Seller</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a asp-controller="Vehicle" asp-action="Edit" asp-route-id="@vehicle.Id" class="btn btn-primary">Edit</a>
+                                <a asp-controller="Vehicle" asp-action="Delete" asp-route-id="@vehicle.Id" class="btn btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8">
+                        <div>
+                            Currently no vehicles registered
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

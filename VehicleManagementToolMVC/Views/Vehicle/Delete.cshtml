@@ -1,0 +1,44 @@
+﻿@model VehicleManagementToolMVC.Models.VehicleViewModel
+
+@{
+    ViewData["Title"] = "Delete vehicle";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form action="Delete" method="post">
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Brand</label>
+        <input type="text" class="form-control" asp-for="Brand" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Model</label>
+        <input type="text" class="form-control" asp-for="Model" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Condition</label>
+        <input type="text" class="form-control" asp-for="Condition" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mileage</label>
+        <input type="text" class="form-control" asp-for="Mileage" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Construction of year</label>
+        <input type="text" class="form-control" asp-for="ConstructionOfYear" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fuel kind</label>
+        <input type="text" class="form-control" asp-for="FuelKind" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Seller</label>
+        <input type="text" class="form-control" asp-for="Seller" readonly />
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-danger" onclick="return function('Delete the following vehicle?')">Delete</button>
+    </div>
+</form>
